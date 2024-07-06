@@ -98,8 +98,8 @@ const App: React.FC = () => {
         >
           <thead>
             <tr>
-              <th className="fs-4 ">Seasons</th>
-              <th className="fs-4">Winners Address</th>
+              <th scope="col" className="fs-4 ">Seasons</th>
+              <th scope="col" className="fs-4">Winners Address</th>
             </tr>
           </thead>
         {allPastWinners.map((eachFriend, index) => (

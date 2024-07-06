@@ -4,7 +4,9 @@ import { tezos } from "./tezos";
 
 export const buyTicketOperation = async () => {
     try{
-        const contract = await tezos.wallet.at("KT1WT6AjrzNhUqXZgc2JVE8bvRgb9WmkUXrT");
+        // const contract = await tezos.wallet.at("KT1WT6AjrzNhUqXZgc2JVE8bvRgb9WmkUXrT");
+        // const contract = await tezos.wallet.at("KT1BwyFqiVjuqYNToXUg9HzaSRRuuSzWswoS");
+        const contract = await tezos.wallet.at("KT1PkzoNEgLXckshKWsMDzt5afkzpYX4Ujs8");// all past winner address
     const op = await contract.methods.buy_ticket().send({
         amount:1,
         mutez:false
@@ -19,7 +21,9 @@ export const buyTicketOperation = async () => {
 
 export const endGameOperation = async () => {
     try{
-        const contract = await tezos.wallet.at("KT1WT6AjrzNhUqXZgc2JVE8bvRgb9WmkUXrT");
+        // const contract = await tezos.wallet.at("KT1WT6AjrzNhUqXZgc2JVE8bvRgb9WmkUXrT");
+        // const contract = await tezos.wallet.at("KT1BwyFqiVjuqYNToXUg9HzaSRRuuSzWswoS"); // winner address
+        const contract = await tezos.wallet.at("KT1PkzoNEgLXckshKWsMDzt5afkzpYX4Ujs8"); // all past winner address
     const op = await contract.methods.end_game().send();
    await op.confirmation(1);
     }catch(error){

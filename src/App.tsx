@@ -10,6 +10,9 @@ const App: React.FC = () => {
   const [players, setPlayers] = useState<string[]>([]);
   const [tickets, setTickets] = useState<number>(5);
   const [loading, setLoading] = useState<boolean>(false);
+  const [winner, setWinner] = useState<string>();
+  const [endGame, setEndGame] = useState<boolean>(true);
+  const [allPastWinners, setAllPastWinners] = useState<string[]>([])
 
   // Set players and tickets remaining
   useEffect(() => {
@@ -18,6 +21,9 @@ const App: React.FC = () => {
       const storage = await fetchStorage();
       setPlayers(Object.values(storage.players));
       setTickets(storage.tickets_available);
+      setWinner(storage.winner_address);
+      setAllPastWinners(Object.values(storage.past_winners))
+     
     };
 
     fetchData();
@@ -45,6 +51,10 @@ const App: React.FC = () => {
       await endGameOperation();
       alert("Game ended")
       setLoading(false);
+
+      const storage = await fetchStorage();
+      setWinner(storage.winner_address);
+      setEndGame(true);
 
     }catch(error){
       console.log(error);
@@ -80,7 +90,12 @@ const App: React.FC = () => {
             </div>
           ))}
         </div>
+        Winner is : {endGame?winner:""}
+        {allPastWinners.map((eachItem,index) =>(
+        <div key={index}>Season {index+1}Winner is : {eachItem}</div>
+      ))}
       </div>
+     
     </div>
   );
 };

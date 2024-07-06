@@ -90,10 +90,30 @@ const App: React.FC = () => {
             </div>
           ))}
         </div>
-        Winner is : {endGame?winner:""}
-        {allPastWinners.map((eachItem,index) =>(
-        <div key={index}>Season {index+1}Winner is : {eachItem}</div>
+        <div className="m-5 text-warning">
+        Past Season Winner is : <span className="text-success fs-4 fw-bolder">{endGame?winner:""}</span>
+        <table
+         
+          className=" table text-light"
+        >
+          <thead>
+            <tr>
+              <th className="fs-4 ">Seasons</th>
+              <th className="fs-4">Winners Address</th>
+            </tr>
+          </thead>
+        {allPastWinners.map((eachFriend, index) => (
+        
+          <tbody>
+            <tr>
+              <td className="p-2 fs-5"><span className="fw-bold">Season {index+1}</span></td>
+              <td className=" w-1/3 ">{eachFriend}</td>
+            </tr>
+          </tbody>
+       
       ))}
+       </table>
+      </div>
       </div>
      
     </div>
